@@ -8,17 +8,19 @@ class NegociacaoController {
 		this._inputValor = $("#valor");
 
 		this._listaNegociacoes = ProxyFactory.create(
-
 			new ListaNegociacoes(),
 			["adiciona" , "limpaNegociacoes"],
 			modelo => this._negociacoesView.update(modelo),
-			
-		)
+		);
 
 		this._negociacoesView = new NegociacoesView($('#negociacoesView'));
 		this._negociacoesView.update(this._listaNegociacoes);
 		
-		this._mensagem = new Mensagem();
+		this._mensagem = ProxyFactory.create(
+			new Mensagem(),
+			["texto"],
+			modelo => this._mensagemView.update(modelo),
+		);
 	 	this._mensagemView = new MensagemView($(".mensagemView"));
 
 	}
@@ -35,10 +37,10 @@ class NegociacaoController {
 		this._listaNegociacoes.adiciona(this._criaNegociacao());
 		console.log(this._listaNegociacoes.negociacoes);
 		this._mensagem.texto = "Negociacao Adicionada com sucesso!"
-		this._mensagemView.update(this._mensagem);
+		//this._mensagemView.update(this._mensagem);
 
 		this._limpaFormulario();
-		this._negociacoesView.update(this._listaNegociacoes);
+		//this._negociacoesView.update(this._listaNegociacoes);
 	}
 
 	_criaNegociacao(){
@@ -59,10 +61,10 @@ class NegociacaoController {
 	limpaNegociacoes(){
 
 		this._listaNegociacoes.limpaNegociacoes();
-		this._negociacoesView.update(this._listaNegociacoes);
+		//this._negociacoesView.update(this._listaNegociacoes);
 
 		this._mensagem.texto = "apagou as negociações!";
-		this._mensagemView.update(this._mensagem);
+		//this._mensagemView.update(this._mensagem);
 	}
 
 
