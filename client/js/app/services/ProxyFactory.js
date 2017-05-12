@@ -20,8 +20,11 @@ class ProxyFactory{
 
 			set(target, prop, value, reciver) {
 
-				Reflect.set(target, prop, value, reciver);
-				acaoTomadaNasAtividades(target);
+				if(propriedadesVigiadasDoObjeto.includes(prop)){
+					acaoTomadaNasAtividades(target);	
+				}
+				
+				return Reflect.set(target, prop, value, reciver);
 			}
 		})
 	}
