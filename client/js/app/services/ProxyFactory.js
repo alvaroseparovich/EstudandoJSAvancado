@@ -16,6 +16,12 @@ class ProxyFactory{
 				}
 
 				return Reflect.get(target, prop, reciver);
+			},
+
+			set(target, prop, value, reciver) {
+
+				Reflect.set(target, prop, value, reciver);
+				acaoTomadaNasAtividades(target);
 			}
 		})
 	}
