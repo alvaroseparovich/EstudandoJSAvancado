@@ -3,12 +3,14 @@ class ProxyFactory{
 	static create(objetoDoProxy, propriedadesVigiadasDoObjeto, acaoTomadaNasAtividades){
 
 		//create retornara isso aqui \/ \/
-		return new Proxy(new ListaNegociacoes(),{
+		return new Proxy(objetoDoProxy,{
 
 			get(target, prop, reciver) {
-				if( propriedadesVigiadasDoObjeto.includes(prop) && ProxyFactory.eFuncao(target[prop]) ) {
 
+				if( propriedadesVigiadasDoObjeto.includes(prop) && ProxyFactory.eFuncao(target[prop]) ) {
+					
 					return function(){
+
 						console.log(`${prop} capturado!`);
 						Reflect.apply(target[prop], target, arguments);
 						return acaoTomadaNasAtividades(target);
@@ -21,6 +23,7 @@ class ProxyFactory{
 			set(target, prop, value, reciver) {
 
 				if(propriedadesVigiadasDoObjeto.includes(prop)){
+
 					acaoTomadaNasAtividades(target);	
 				}
 				
