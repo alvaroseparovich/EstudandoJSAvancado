@@ -6,7 +6,7 @@ class ProxyFactory{
 		return new Proxy(new ListaNegociacoes(),{
 
 			get(target, prop, reciver) {
-				if( propriedadesVigiadasDoObjeto.includes(prop) && typeof(target[prop]) == typeof(Function) ) {
+				if( propriedadesVigiadasDoObjeto.includes(prop) && ProxyFactory.eFuncao(target[prop]) ) {
 
 					return function(){
 						console.log(`${prop} capturado!`);
@@ -28,4 +28,9 @@ class ProxyFactory{
 			}
 		})
 	}
+
+	static eFuncao(algo){
+		typeof(algo) == typeof(Function) 
+	}
+
 }
