@@ -35,7 +35,6 @@ class NegociacaoController {
 		)
 
 		this._listaNegociacoes.adiciona(this._criaNegociacao());
-		console.log(this._listaNegociacoes.negociacoes);
 		this._mensagem.texto = "Negociacao Adicionada com sucesso!"
 		//this._mensagemView.update(this._mensagem);
 

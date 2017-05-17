@@ -12,7 +12,7 @@ class Mensagem {
 	
 	}
 
-	set texto(texto=""){
+	set texto(texto){
 		
 		this._texto = texto;
 	

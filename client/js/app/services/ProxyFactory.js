@@ -24,6 +24,7 @@ class ProxyFactory{
 
 				if(propriedadesVigiadasDoObjeto.includes(prop)){
 
+					target[prop] = value;
 					acaoTomadaNasAtividades(target);	
 				}
 				
