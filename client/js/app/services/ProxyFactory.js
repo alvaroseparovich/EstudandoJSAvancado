@@ -34,7 +34,7 @@ class ProxyFactory{
 	}
 
 	static eFuncao(algo){
-		typeof(algo) == typeof(Function) 
+		return typeof(algo) == typeof(Function) 
 	}
 
 }
