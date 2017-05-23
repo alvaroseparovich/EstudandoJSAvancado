@@ -11,7 +11,7 @@ class ProxyFactory{
 					
 					return function(){
 
-						console.log(`${prop} capturado!`);
+						//console.log(`${prop} capturado!`);
 						Reflect.apply(target[prop], target, arguments);
 						return acaoTomadaNasAtividades(target);
 					}
