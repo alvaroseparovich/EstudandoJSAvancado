@@ -62,5 +62,10 @@ class NegociacaoController {
 		//this._mensagemView.update(this._mensagem);
 	}
 
+	importarDeServer(){
+
+		console.log('chamando importador');
+	}
+
 
 }
