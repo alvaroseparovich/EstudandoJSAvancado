@@ -64,7 +64,22 @@ class NegociacaoController {
 
 	importarDeServer(){
 
-		console.log('chamando importador');
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET', 'negociacoes/semana');
+
+		xhr.onreadystatechange = () => {
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					console.log('Retorno Correto da requisição');
+					console.log(xhr.responseText);
+				}else{
+					console.log('deu erro no status');
+					console.log(xhr.responseText);
+				}
+			}
+		}
+		xhr.send();
+
 	}
 
 
