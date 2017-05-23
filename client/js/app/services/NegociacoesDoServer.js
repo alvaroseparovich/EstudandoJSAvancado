@@ -14,7 +14,7 @@ class NegociacoesDoServer {
 						);
 				}else{
 					console.log(xhr.responseText);
-					cb("não foi possível receber as informações do servidor.",null);
+					cb("Não foi possível receber as informações do servidor.",null);
 				}
 
 			}
