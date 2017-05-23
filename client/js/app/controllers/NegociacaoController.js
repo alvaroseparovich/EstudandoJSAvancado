@@ -58,26 +58,19 @@ class NegociacaoController {
 		this._mensagem.texto = "apagou as negociações!";
 	}
 
-	importarDeServer(){
+	importarDoServer(){
 
-		let xhr = new XMLHttpRequest();
-		xhr.open('GET', 'negociacoes/semana');
+		let server = new NegociacoesDoServer();
 
-		xhr.onreadystatechange = () => {
-			if(xhr.readyState == 4){
-				if(xhr.status == 200){
-					JSON.parse(xhr.responseText)
-						.map(obj=> new Negociacao(new Date(obj.data),obj.quantidade, obj.valor))
-						.forEach(negociacaoH=> this._listaNegociacoes.adiciona(negociacaoH));
-					this._mensagem.texto = "Negociações adicionadas com sucesso!";
-				}else{
-					console.log(xhr.responseText);
-					this._mensagem.texto = "Deu zigzira";
-				}
+		server.negociacoesDaSemana((erro, negociacoes)=>{
+			if(erro){
+				this._mensagem.texto = erro;
+				return;
 			}
-		}
-		xhr.send();
 
+			negociacoes.forEach(negociacaoH=> this._listaNegociacoes.adiciona(negociacaoH));
+			this._mensagem.texto = "negociações importadas!";
+		});
 	}
 
 
