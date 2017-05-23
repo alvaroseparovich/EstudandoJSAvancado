@@ -71,7 +71,7 @@ class NegociacaoController {
 			if(xhr.readyState == 4){
 				if(xhr.status == 200){
 					console.log('Retorno Correto da requisição');
-					console.log(xhr.responseText);
+					console.log(JSON.parse(xhr.responseText));
 				}else{
 					console.log('deu erro no status');
 					console.log(xhr.responseText);
