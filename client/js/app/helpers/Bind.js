@@ -1,6 +1,6 @@
 class Bind {
 	
-	constructor(model, view, propriedades){
+	constructor(model, view, ...propriedades){
 	
 		let proxy = ProxyFactory.create(
 			model,

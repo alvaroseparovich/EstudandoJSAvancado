@@ -14,7 +14,7 @@ class NegociacaoController {
 		this._listaNegociacoes = new Bind(
 			new ListaNegociacoes(),
 			this._negociacoesView,
-			['adiciona','limpaNegociacoes'],
+			'adiciona','limpaNegociacoes',
 		);
 
 		
@@ -23,7 +23,7 @@ class NegociacaoController {
 		this._mensagem = new Bind(
 			new Mensagem(),
 			this._mensagemView,
-			["texto"],
+			"texto",
 		);
 
 	}
