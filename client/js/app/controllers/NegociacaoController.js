@@ -70,11 +70,13 @@ class NegociacaoController {
 		xhr.onreadystatechange = () => {
 			if(xhr.readyState == 4){
 				if(xhr.status == 200){
-					console.log('Retorno Correto da requisição');
-					console.log(JSON.parse(xhr.responseText));
+					JSON.parse(xhr.responseText)
+						.map(obj=> new Negociacao(new Date(obj.data),obj.quantidade, obj.valor))
+						.forEach(negociacaoH=> this._listaNegociacoes.adiciona(negociacaoH));
+					this._mensagem.texto = "Negociações adicionadas com sucesso!";
 				}else{
-					console.log('deu erro no status');
 					console.log(xhr.responseText);
+					this._mensagem.texto = "Deu zigzira";
 				}
 			}
 		}
