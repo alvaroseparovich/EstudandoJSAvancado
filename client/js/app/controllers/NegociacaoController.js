@@ -71,16 +71,6 @@ class NegociacaoController {
 			)
 		.catch(erro => this._mensagem.texto = erro);
 
-/*
-		server.negociacoesDaSemana((erro, negociacoes)=>{
-			if(erro){
-				this._mensagem.texto = erro;
-				return;
-			}
-
-			negociacoes.forEach(negociacaoH=> this._listaNegociacoes.adiciona(negociacaoH));
-			this._mensagem.texto = "negociações importadas!";
-		});*/
 	}
 
 
