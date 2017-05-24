@@ -62,6 +62,16 @@ class NegociacaoController {
 
 		let server = new NegociacoesDoServer();
 
+		let promise = server.negociacoesDaSemana();
+
+		promise
+		.then(negociacoes => {
+			negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao))
+			this._mensagem.texto = "Negociaçoes adicionadas com Sucesso!"}
+			)
+		.catch(erro => this._mensagem.texto = erro);
+
+/*
 		server.negociacoesDaSemana((erro, negociacoes)=>{
 			if(erro){
 				this._mensagem.texto = erro;
@@ -70,7 +80,7 @@ class NegociacaoController {
 
 			negociacoes.forEach(negociacaoH=> this._listaNegociacoes.adiciona(negociacaoH));
 			this._mensagem.texto = "negociações importadas!";
-		});
+		});*/
 	}
 
 
