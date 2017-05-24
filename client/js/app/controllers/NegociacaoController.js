@@ -62,14 +62,17 @@ class NegociacaoController {
 
 		let server = new NegociacoesDoServer();
 
-		let promise = server.negociacoesDaSemana();
-
-		promise
-		.then(negociacoes => {
-			negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao))
-			this._mensagem.texto = "Negociaçoes adicionadas com Sucesso!"}
-			)
-		.catch(erro => this._mensagem.texto = erro);
+		Promise.all([
+			server.negociacoesDaSemana(),
+			server.negociacoesDaSemanaPassada(),
+			server.negociacoesDaSemanaRetrasada()]
+		).then(negociacoes => {
+			negociacoes
+				.reduce((arrayAchatado, array)=> arrayAchatado.concat(array),[])
+				.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+			this._mensagem.texto = "Negociaçoes do Server adicionadas com sucesso!";
+		})
+		.catch(error => this._mensagem.texto = "Deu Zig Ziraa!")
 
 	}
 
